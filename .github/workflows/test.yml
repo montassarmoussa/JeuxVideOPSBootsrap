@@ -30,4 +30,4 @@ jobs:
         run: ls -la
 
       - name: Generation de la couverture du code   
-        run: npm test -- --coverage --watchAll=false
+        run: nyc --check-coverage --branches 100 --lines 100 --statements 100 --functions 100 npm run mocha:test
