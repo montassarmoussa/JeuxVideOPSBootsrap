@@ -25,3 +25,6 @@ jobs:
 
       - name: Message de lancement
         run: echo "Hello Github Actions!"
+
+      - name: liste des fichiers du repo 
+        run: ls -la
