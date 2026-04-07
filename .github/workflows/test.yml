@@ -28,3 +28,6 @@ jobs:
 
       - name: liste des fichiers du repo 
         run: ls -la
+
+      - name: Generation de la couverture du code   
+        run: npm test -- --coverage --watchAll=false
