@@ -31,3 +31,6 @@ jobs:
 
       - name: Generation de la couverture du code   
         run: npm run nyc:run
+
+      - name: Teste de fonctionnalité   
+        run: npm run cypress:test
