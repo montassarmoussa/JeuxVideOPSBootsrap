@@ -55,4 +55,19 @@ describe('Calculator', () => {
             assert.equal(calc.divide(-5, 2), -2.5);
         })
     })
+
+    describe('Power', () => {
+        it('should return 1 when raising 1 to the power of 1', () => {
+            assert.equal(calc.power(1, 1), 1);
+        })
+        it('should return 0 when raising 0 to the power of 0', () => {
+            assert.equal(calc.power(0, 0), 1);
+        })
+        it('should return 1 when raising -1 to the power of -1', () => {
+            assert.equal(calc.power(-1, -1), -1);
+        })
+        it('should return 8 when raising 2 to the power of 3', () => {
+            assert.equal(calc.power(2, 3), 8);
+        })
+    })    
 })
