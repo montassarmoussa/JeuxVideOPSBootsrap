@@ -36,7 +36,7 @@ jobs:
         run: npm run cypress:test
 
       - name: Prerequis eslint
-        run: npm init @eslint/config@latestp
+        run: npm init @eslint/config@latest
 
       - name: Linter le code 
         run: npm run eslint:check  
