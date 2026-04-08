@@ -34,5 +34,9 @@ jobs:
 
       - name: Teste de fonctionnalité   
         run: npm run cypress:test
+
+      - name: Prerequis eslint
+        run: npm init @eslint/config  
+
       - name: Linter le code 
         run: npm run eslint:check  
