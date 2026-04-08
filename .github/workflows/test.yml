@@ -42,4 +42,4 @@ jobs:
         run: npm run jsdoc && echo "Documentation générée avec succès ! RAS ✅"  
 
       - name: Realisation des test unitaire
-        run: mocha:test && echo "Tests unitaires passés avec succès ! RAS ✅"
+        run: npm run mocha:test && echo "Tests unitaires passés avec succès ! RAS ✅"
