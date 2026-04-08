@@ -12,28 +12,31 @@ jobs:
     
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3 && echo "Code source récupéré avec succès ! RAS ✅"
 
       - name: Setup node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v3 && echo "Node.js configuré avec succès ! RAS ✅"
         with:
           node-version: 16.13.x
-          cache: npm
+          cache: npm 
 
       - name: Install
-        run: npm ci
+        run: npm ci && echo "Dépendances installées avec succès ! RAS ✅"
 
       - name: Message de lancement
-        run: echo "Hello Github Actions!"
+        run: echo "Hello Github Actions!" &&  echo "Installation des dépendances réussie ! RAS ✅"
 
       - name: liste des fichiers du repo 
-        run: ls -la
+        run: ls -la && echo "Liste des fichiers affichée avec succès ! RAS ✅"
 
       - name: Generation de la couverture du code   
-        run: npm run nyc:run
+        run: npm run nyc:run && echo "Couverture du code générée avec succès ! RAS ✅"
 
       - name: Teste de fonctionnalité   
-        run: npm run cypress:test
+        run: npm run cypress:test && echo "Tests de fonctionnalité passés avec succès ! RAS ✅"
 
       - name: Linter le code 
-        run: npm run eslint:check  && echo "Linting passé avec succès ! RAS" 
+        run: npm run eslint:check  && echo "Linting passé avec succès ! RAS ✅" 
+      
+      - name: Documentation de code 
+        run: npm run jsdoc && echo "Documentation générée avec succès ! RAS ✅"  
