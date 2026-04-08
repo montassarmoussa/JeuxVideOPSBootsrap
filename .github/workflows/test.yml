@@ -34,3 +34,5 @@ jobs:
 
       - name: Teste de fonctionnalité   
         run: npm run cypress:test
+      - name: Linter le code 
+        run: npm run eslint:check  
