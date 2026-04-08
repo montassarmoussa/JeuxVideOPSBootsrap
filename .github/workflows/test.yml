@@ -36,4 +36,4 @@ jobs:
         run: npm run cypress:test
 
       - name: Linter le code 
-        run: npm run eslint:check  
+        run: npm run eslint:check  && echo "Linting passé avec succès ! RAS" 
