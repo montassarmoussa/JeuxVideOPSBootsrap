@@ -48,23 +48,9 @@ jobs:
           to: ${{ secrets.TELEGRAM_CHAT_ID }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            ✅ *Pipeline réussi — JeuxVideOPSBootStrap*
+            Salut Jeef le bg de la street, y'a bg zebi tout est ok ! 
 
             👤 Auteur : ${{ github.actor }}
             🌿 Branche : ${{ github.ref_name }}
             💬 Commit : ${{ github.event.commits[0].message }}
             🔗 [Voir le commit](${{ github.event.commits[0].url }})
-
-      - name: Notification Telegram (échec)
-        if: failure()
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_CHAT_ID }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: |
-            ❌ *Pipeline ÉCHOUÉ — JeuxVideOPSBootStrap*
-
-            👤 Auteur : ${{ github.actor }}
-            🌿 Branche : ${{ github.ref_name }}
-            💬 Commit : ${{ github.event.commits[0].message }}
-            🔗 [Voir les logs](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
