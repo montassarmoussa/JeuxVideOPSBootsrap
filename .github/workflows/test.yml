@@ -1,12 +1,9 @@
 name: JeuxVideOPSBootStrap
-
 on:
   push:
       branches:
         - 'main'
-
 jobs:
-
   first_jobs:
     runs-on: ubuntu-latest
     
@@ -24,9 +21,9 @@ jobs:
         run: npm ci && echo "Dépendances installées avec succès ! RAS ✅"
 
       - name: Message de lancement
-        run: echo "Hello Github Actions!" &&  echo "Installation des dépendances réussie ! RAS ✅"
+        run: echo "Hello Github Actions!" && echo "Installation des dépendances réussie ! RAS ✅"
 
-      - name: liste des fichiers du repo 
+      - name: Liste des fichiers du repo 
         run: ls -la && echo "Liste des fichiers affichée avec succès ! RAS ✅"
 
       - name: Generation de la couverture du code   
@@ -36,10 +33,38 @@ jobs:
         run: npm run cypress:test && echo "Tests de fonctionnalité passés avec succès ! RAS ✅"
 
       - name: Linter le code 
-        run: npm run eslint:check  && echo "Linting passé avec succès ! RAS ✅" 
+        run: npm run eslint:check && echo "Linting passé avec succès ! RAS ✅" 
       
       - name: Documentation de code 
         run: npm run jsdoc && echo "Documentation générée avec succès ! RAS ✅"  
 
       - name: Realisation des test unitaire
         run: npm run mocha:test && echo "Tests unitaires passés avec succès ! RAS ✅"
+
+      - name: Notification Telegram (succès)
+        if: success()
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            ✅ *Pipeline réussi — JeuxVideOPSBootStrap*
+
+            👤 Auteur : ${{ github.actor }}
+            🌿 Branche : ${{ github.ref_name }}
+            💬 Commit : ${{ github.event.commits[0].message }}
+            🔗 [Voir le commit](${{ github.event.commits[0].url }})
+
+      - name: Notification Telegram (échec)
+        if: failure()
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: |
+            ❌ *Pipeline ÉCHOUÉ — JeuxVideOPSBootStrap*
+
+            👤 Auteur : ${{ github.actor }}
+            🌿 Branche : ${{ github.ref_name }}
+            💬 Commit : ${{ github.event.commits[0].message }}
+            🔗 [Voir les logs](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
